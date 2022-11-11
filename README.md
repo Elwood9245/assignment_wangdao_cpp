@@ -2,7 +2,7 @@
 
 This repository is used to save personal assignment.
 
-Task 1 piecewise_func
+## Task 1 piecewise_func
 
 ```cpp
 #include <iostream>
