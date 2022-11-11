@@ -58,3 +58,28 @@ int main(int argc, char const *argv[])
     return 0;   //11th, Nov.
 }
 ```
+
+## Task 4 Narcissistic number (3 digits)
+
+取余数也可以，这里用的是整型变量除法运算后直接舍去小数位数。
+
+```cpp
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    int hundred, ten, one;
+    for (int i = 100; i < 1000; i++)
+    {
+        hundred = i/100;
+        ten = (i - hundred *100)/10;
+        one = i - hundred * 100 - ten * 10;
+        if (pow(hundred,3) + pow(ten,3) + pow(one,3) == i)
+        {
+            cout << i << endl;
+        }
+    }
+    return 0;
+}
+```
