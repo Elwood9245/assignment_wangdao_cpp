@@ -1,4 +1,4 @@
-# Assignment of Wangdao cpp
+# Assignment of Wangdao C/C++Linux
 
 This repository is used to save personal assignment.
 
@@ -35,8 +35,7 @@ int main(int argc, char const *argv[])
     return 0;
 }   //11th, Nov.
 ```
-本题关键在于，c++在运算时会统一精度，如无`upperCase += 32;`直接写成`cout << upperCase+32 << endl;`
-最终会导致输出整型数。
+本题关键在于，c++在运算时会统一精度，如无 `upperCase += 32;` 直接写成 `cout << upperCase+32 << endl;`, 最终会导致输出整型数。
 
 ## Task 3 Martix
 
@@ -86,7 +85,7 @@ int main(int argc, char const *argv[])
 
 ## Task 5 Grade Trans
 
-这题好像稍微有点问题，描述是五级分制，其实只有四级。写的时候补了一级E。
+这题好像稍微有点问题，描述是五级分制，其实只有四级。写的时候补充了 grade E.
 
 ```cpp
 #include <iostream>
@@ -112,3 +111,59 @@ int main(int argc, char const *argv[])
     return 0;
 }   //12th, Nov.
 ```
+
+## Task 6 Fibonacci Sequence(no recursion)
+
+不使用递归的话，可以用就用循环来迭代，用一个中间变量来存储计算值。因为不是满二叉树所以递归的时间复杂度应该略小于 O(2^n) ，用循环的话应该是 O(n).
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main(int argc, char const *argv[])
+{
+    int n;
+    long long fibn, temp1 = 1, temp2 = 1;
+    cin >> n;
+    if (n == 0 || n == 1){
+        cout << 1 << endl;
+        return 0;
+    }
+    for(int i = 2; i <= n; ++i){
+        fibn = temp1 + temp2;
+        temp2 = temp1;
+        temp1 = fibn;
+    }
+    cout << fibn << endl;
+    return 0;
+}   //12th, Nov.
+```
+
+这题有意思的地方在于，一旦数字变大，就有可能出现数据溢出，所以用 `long long` 来存了Fibonacci number. 而数字变大，递归方式的时间复杂度提高，很难算出结果，用循环的方式产生更快。
+
+## Task 7 Invert sequence store
+
+对于一个给定的n，输入一组数，然后输出其反转。
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main(int argc, char const *argv[]){
+    int n, temp;
+    int num[100] = {0};
+    cin >> n;
+    for (int i = 0; i < n; ++i)
+        cin >> num[i];
+    for (int j = n - 1, i = 0; j > (n - 1) / 2; --j, ++i)
+    {
+        temp = num[j];
+        num[j] = num[i];
+        num[i] = temp;
+    }
+    for (int i = 0; i < n; ++i)
+        cout << num[i] << " ";
+    return 0;
+}   //12th, Nov.
+```
+
