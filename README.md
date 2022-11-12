@@ -203,3 +203,43 @@ int main(int argc, char const *argv[])
 }   //13th, Nov.
 ```
 另外，文件名中含有`&`符号会导致在Linux下编译错误。
+
+## Test 9 Grade calculate
+
+c语言中控制结束输入用的是`scanf()`的返回值，这里用c++，所以直接写了score的判断。此外，题目本身并没有要求存储成绩，所以只写了输出最高和最低成绩。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    float score, highest = 0, lowest = 100;
+    while (cin >> score){
+        if (score < 0)  break;
+        if (score > highest)  highest = score;
+        if (score < lowest)  lowest = score;
+    }
+    cout << "The highest score is " << highest << endl;
+    cout << "The lowest score is " << lowest << endl;
+    return 0;
+}   //13th, Nov.
+```
+
+## Test 10 F temprature to C temprature (use function)
+
+```cpp
+#include <iostream>
+using namespace std;
+
+float transFunc(float f){
+    return (f-32)*5/9.0;
+}
+
+int main(int argc, char const *argv[])
+{
+    float f;
+    cin >> f;
+    cout << transFunc(f) << endl;
+    return 0;
+}   //13th, Nov.
+```
