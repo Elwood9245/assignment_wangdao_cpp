@@ -35,6 +35,7 @@ int main(int argc, char const *argv[])
     return 0;
 }   //11th, Nov.
 ```
+
 本题关键在于，c++在运算时会统一精度，如无 `upperCase += 32;` 直接写成 `cout << upperCase+32 << endl;`, 最终会导致输出整型数。
 
 ## Task 3 Martix
@@ -114,7 +115,7 @@ int main(int argc, char const *argv[])
 
 ## Task 6 Fibonacci Sequence(no recursion)
 
-不使用递归的话，可以用就用循环来迭代，用一个中间变量来存储计算值。因为不是满二叉树所以递归的时间复杂度应该略小于 O(2^n) ，用循环的话应该是 O(n).
+不使用递归的话，可以就用循环来迭代，用一个中间变量来存储计算值。因为不是满二叉树所以递归的时间复杂度应该小于 O(2^n) ，用循环的话应该是 O(n).
 
 ```cpp
 #include <iostream>
@@ -139,7 +140,7 @@ int main(int argc, char const *argv[])
 }   //12th, Nov.
 ```
 
-这题有意思的地方在于，一旦数字变大，就有可能出现数据溢出，所以用 `long long` 来存了Fibonacci number. 而数字变大，递归方式的时间复杂度提高，很难算出结果，用循环的方式产生更快。
+这题有意思的地方在于，一旦数字变大，就有可能出现数据溢出，所以用 `long long` 来存了Fibonacci number. 而数字变大，递归需要的时间很长，很难算出结果，用循环的方式产生更快。
 
 ## Task 7 Invert sequence store
 
@@ -202,6 +203,7 @@ int main(int argc, char const *argv[])
     return 0;
 }   //13th, Nov.
 ```
+
 另外，文件名中含有`&`符号会导致在Linux下编译错误。
 
 ## Test 9 Grade calculate
@@ -242,4 +244,38 @@ int main(int argc, char const *argv[])
     cout << transFunc(f) << endl;
     return 0;
 }   //13th, Nov.
+```
+
+## Test 11 All factors of a number
+
+这道题根本就没要求存储。所以不要存储。  
+
+核心在于如何控制重复的因数，用到了`continue`. 事实上控制乘法符号的输出也是关键一环，这里可以用在数字前输出乘号的方法，没必要放在后面处理。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(int argc, char const *argv[])
+{
+    int num = 0, i = 2;
+    cin >> num;
+    if (num == 0)
+    {
+        cout << "0 do not have a factor." << endl;
+        return 0;
+    }
+    cout << num << "=1";
+    while (i <= num)
+    {
+        if (num % i == 0)
+        {
+            cout << "*" << i;
+            num = num / i;
+            continue;
+        }
+        ++i;
+    }
+    cout << endl;
+    return 0;
+}   //15th, Nov.
 ```
